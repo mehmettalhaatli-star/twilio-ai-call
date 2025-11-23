@@ -3,15 +3,23 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/voice', methods=['GET', 'POST'])
+@app.route('/voice', methods=['POST'])
 def voice():
-    print("Twilio arama geldi!")  # Log için
+    print("Türkçe arama geldi!")  # Log için
     
     response = """
     <Response>
-        <Say language="tr-TR" voice="woman">Merhaba! Test aramasına hoş geldiniz.</Say>
+        <Say language="tr-TR" voice="Polly.Filiz">
+            Merhaba! Ben yapay zeka asistanınızım. Yeni konut projemiz hakkında bilgi vermek için arıyorum.
+        </Say>
+        <Pause length="2"/>
+        <Say language="tr-TR" voice="Polly.Filiz">
+            Projemiz İstanbul Ataşehir'de yer alıyor. 2 artı 1 ve 3 artı 1 daire seçeneklerimiz mevcut.
+        </Say>
         <Pause length="1"/>
-        <Say language="tr-TR" voice="woman">Bu bir yapay zeka testidir. İyi günler dilerim.</Say>
+        <Say language="tr-TR" voice="Polly.Filiz">
+            Detaylı bilgi için sizi satış temsilcimize bağlıyorum. İyi günler dilerim.
+        </Say>
     </Response>
     """
     return Response(response, mimetype='text/xml')
